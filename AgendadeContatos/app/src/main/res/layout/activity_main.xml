@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ListView
+        android:id="@+id/lista_contatos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ListView>
+
+
+    <Button
+        android:id="@+id/btn_cadastrar"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/botao_flutuante"
+        android:text="+"
+        android:textColor="@color/colorWhite"
+        android:textSize="24sp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="8dp"/>
+
+</RelativeLayout>
