@@ -16,8 +16,10 @@
         android:title="Excluir"
         app:showAsAction="always"
         android:icon="@drawable/ic_deletar"
+
         >
 
     </item>
+
 
 </menu>

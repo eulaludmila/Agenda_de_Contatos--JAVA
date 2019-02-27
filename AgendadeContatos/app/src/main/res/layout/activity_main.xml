@@ -12,17 +12,17 @@
         android:layout_height="match_parent"></ListView>
 
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_cadastrar"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:background="@drawable/botao_flutuante"
-        android:text="+"
         android:textColor="@color/colorWhite"
         android:textSize="24sp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="8dp"/>
+        android:layout_marginRight="18dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/ic_add"/>
 
 </RelativeLayout>

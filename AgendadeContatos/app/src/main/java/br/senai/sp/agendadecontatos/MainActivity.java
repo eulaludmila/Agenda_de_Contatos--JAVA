@@ -1,6 +1,8 @@
 package br.senai.sp.agendadecontatos;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -10,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -21,7 +24,7 @@ import br.senai.sp.modelo.Contato;
 public class MainActivity extends AppCompatActivity {
 
     private ListView listaContatos;
-    private Button btnCadastrar;
+    private ImageButton btnCadastrar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +49,26 @@ public class MainActivity extends AppCompatActivity {
 
         registerForContextMenu(listaContatos);
 
+        listaContatos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Contato contato = (Contato) listaContatos.getItemAtPosition(position);
+
+                Intent editar = new Intent(MainActivity.this, CadastroActivity.class);
+                editar.putExtra("contato", contato);
+
+                startActivity(editar);
+
+
+            }
+        });
+
+
     }
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+
         MenuInflater menuContexto = getMenuInflater();
         menuContexto.inflate(R.menu.menu_context_lista_contatos, menu);
 
@@ -59,15 +78,32 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onContextItemSelected(MenuItem item) {
 
-        ContatoDAO dao = new ContatoDAO(MainActivity.this);
-
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        final ContatoDAO dao = new ContatoDAO(MainActivity.this);
+        final Contato contato = (Contato) listaContatos.getItemAtPosition(info.position);
 
-        Contato contato = (Contato) listaContatos.getItemAtPosition(info.position);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Excluir Contato");
+        builder.setMessage("Confirma a exclusão do contato " + contato.getNome() + " ?");
+        builder.setIcon(R.drawable.ic_deletar);
 
-        dao.excluir(contato);
-        dao.close();
-        carregarLista();
+        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dao.excluir(contato);
+                        dao.close();
+                        carregarLista();
+
+                    }
+        });
+
+        builder.setNegativeButton("Não" , null);
+
+        builder.create().show();
+
+
+
+
 
         return super.onContextItemSelected(item);
     }

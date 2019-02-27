@@ -56,6 +56,16 @@ public class ContatoDAO extends SQLiteOpenHelper{
         db.delete("tbl_contato", "id = ?", params);
     }
 
+    public void atualizar(Contato contato){
+        SQLiteDatabase db = getWritableDatabase();
+
+        String [] params = {String.valueOf(contato.getId())};
+        ContentValues dados = getContentValues(contato);
+
+        db.update("tbl_contato",dados,"id = ?", params);
+
+    }
+
 
     public ContentValues getContentValues(Contato contato){
 

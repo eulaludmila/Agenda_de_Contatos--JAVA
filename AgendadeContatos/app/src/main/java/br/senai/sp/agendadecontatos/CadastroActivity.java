@@ -1,5 +1,6 @@
 package br.senai.sp.agendadecontatos;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -20,6 +21,15 @@ public class CadastroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro);
 
         helper = new CadastroContatoHelper(this);
+
+        Intent intent = getIntent();
+
+        Contato contato = (Contato) intent.getSerializableExtra("contato");
+
+        if(contato != null){
+            helper.preencherFormulario(contato);
+        }
+
     }
 
     @Override
@@ -40,7 +50,12 @@ public class CadastroActivity extends AppCompatActivity {
                 Contato contato = helper.getContato();
                 ContatoDAO dao = new ContatoDAO(this);
 
-                dao.salvar(contato);
+                if(contato.getId() == 0){
+                    dao.salvar(contato);
+                }else{
+                    dao.atualizar(contato);
+                }
+
                 dao.close();
                 finish();
 
