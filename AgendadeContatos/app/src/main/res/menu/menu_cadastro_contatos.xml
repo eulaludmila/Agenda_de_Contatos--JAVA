@@ -12,14 +12,14 @@
     </item>
 
     <item
-        android:id="@+id/deletar"
-        android:title="Excluir"
+        android:id="@+id/limpar"
+        android:title="Salvar"
         app:showAsAction="always"
-        android:icon="@drawable/ic_deletar"
-
+        android:icon="@drawable/ic_limpar"
         >
 
     </item>
+
 
 
 </menu>

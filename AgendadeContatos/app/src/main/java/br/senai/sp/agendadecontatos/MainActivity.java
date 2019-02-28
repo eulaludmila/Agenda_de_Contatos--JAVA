@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ListView listaContatos;
     private ImageButton btnCadastrar;
+    private LinearLayout novoContato;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         listaContatos = findViewById(R.id.lista_contatos);
         btnCadastrar = findViewById(R.id.btn_cadastrar);
-
+        novoContato = findViewById(R.id.novo_contato);
 
 
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
@@ -41,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent cadastrar = new Intent(MainActivity.this,CadastroActivity.class);
-
+                novoContato.setVisibility(View.VISIBLE);
                 startActivity(cadastrar);
 
             }
@@ -57,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
                 Intent editar = new Intent(MainActivity.this, CadastroActivity.class);
                 editar.putExtra("contato", contato);
 
+
+                novoContato.setVisibility(View.INVISIBLE);
                 startActivity(editar);
 
 
