@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Agenda de Contatos</string>
     <string name="novo_contato"><br>Novo Contato</br></string>
+    <string name="atualiza_contato"><br>Atualizar Contato</br></string>
     <string name="nome">Nome</string>
     <string name="endereco">Endereço</string>
     <string name="telefone">Telefone</string>

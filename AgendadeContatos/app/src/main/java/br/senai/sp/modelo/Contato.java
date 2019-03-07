@@ -62,6 +62,6 @@ public class Contato implements Serializable {
 
     @Override
     public String toString() {
-        return this.nome + "\n" + this.telefone;
+        return this.nome + " | " + this.telefone;
     }
 }

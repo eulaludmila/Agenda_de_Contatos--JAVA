@@ -90,7 +90,7 @@ public class ContatoDAO extends SQLiteOpenHelper{
 
         SQLiteDatabase db = getReadableDatabase();
 
-        String sql = "SELECT * FROM tbl_contato";
+        String sql = "SELECT * FROM tbl_contato ORDER BY nome ASC";
 
         Cursor c = db.rawQuery(sql, null);
 

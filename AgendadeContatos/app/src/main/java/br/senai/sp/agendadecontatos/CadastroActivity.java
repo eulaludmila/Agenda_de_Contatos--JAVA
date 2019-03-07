@@ -9,6 +9,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import br.senai.sp.dao.ContatoDAO;
 import br.senai.sp.modelo.Contato;
@@ -16,7 +17,8 @@ import br.senai.sp.modelo.Contato;
 public class CadastroActivity extends AppCompatActivity {
 
     private CadastroContatoHelper helper;
-
+    private LinearLayout novoContato;
+    private LinearLayout atualizaContato;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +26,17 @@ public class CadastroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro);
 
         helper = new CadastroContatoHelper(this);
+        novoContato = findViewById(R.id.novo_contato);
+        atualizaContato = findViewById(R.id.atualiza_contato);
+
+        atualizaContato.setVisibility(View.INVISIBLE);
 
         Intent intent = getIntent();
-
         Contato contato = (Contato) intent.getSerializableExtra("contato");
 
         if(contato != null){
+            novoContato.setVisibility(View.INVISIBLE);
+            atualizaContato.setVisibility(View.VISIBLE);
             helper.preencherFormulario(contato);
         }
 
@@ -59,11 +66,13 @@ public class CadastroActivity extends AppCompatActivity {
                     if (contato.getId() == 0) {
 
                         dao.salvar(contato);
+                        Toast.makeText(this, contato.getNome() + " salvo com sucesso", Toast.LENGTH_LONG).show();
                         dao.close();
                         finish();
 
                     } else {
                         dao.atualizar(contato);
+                        Toast.makeText(this, contato.getNome() + " atualizado com sucesso", Toast.LENGTH_LONG).show();
                         dao.close();
                         finish();
                     }
