@@ -101,7 +101,7 @@ public class CadastroContatoHelper {
 
         if(txtLinkedin.getText().toString().isEmpty()){
             layoutTxtLinkedin.setErrorEnabled(true);
-            layoutTxtLinkedin.setError("Digite o seu linkedin");
+            layoutTxtLinkedin.setError("Por favor digite o seu linkedin");
             validado = false;
         }else{
 
