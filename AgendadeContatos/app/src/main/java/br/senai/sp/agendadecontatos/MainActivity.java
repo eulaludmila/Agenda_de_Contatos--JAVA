@@ -2,6 +2,7 @@ package br.senai.sp.agendadecontatos;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ListView listaContatos;
     private ImageButton btnCadastrar;
+    private CadastroContatoHelper helper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+
     }
 
     @Override
@@ -82,16 +85,20 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onContextItemSelected(MenuItem item) {
 
-        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        final ContatoDAO dao = new ContatoDAO(MainActivity.this);
-        final Contato contato = (Contato) listaContatos.getItemAtPosition(info.position);
+        switch (item.getItemId()) {
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Excluir Contato");
-        builder.setMessage("Confirma a exclusão do contato " + contato.getNome() + " ?");
-        builder.setIcon(R.drawable.ic_deletar);
+            case R.id.excluir:
 
-        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+                final ContatoDAO dao = new ContatoDAO(MainActivity.this);
+                final Contato contato = (Contato) listaContatos.getItemAtPosition(info.position);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("Excluir Contato");
+                builder.setMessage("Confirma a exclusão do contato " + contato.getNome() + " ?");
+                builder.setIcon(R.drawable.ic_deletar);
+
+                builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dao.excluir(contato);
@@ -100,13 +107,27 @@ public class MainActivity extends AppCompatActivity {
                         carregarLista();
 
                     }
-        });
+                });
 
-        builder.setNegativeButton("Não" , null);
+                builder.setNegativeButton("Não", null);
 
-        builder.create().show();
+                builder.create().show();
+                break;
+
+            case R.id.ligar:
+
+                Contato numeroContato = helper.getContato();
+
+                Uri uri = Uri.parse("tel:" + numeroContato.getTelefone());
+                Intent chamada = new Intent(Intent.ACTION_DIAL, uri);
+
+                startActivity(chamada);
 
 
+                break;
+
+
+        }
 
 
 

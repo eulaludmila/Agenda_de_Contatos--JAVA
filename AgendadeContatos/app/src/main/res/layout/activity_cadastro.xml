@@ -4,8 +4,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
 
     >
-
-
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -19,50 +17,37 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="48dp">
+            android:layout_marginBottom="32dp">
+
             <LinearLayout
                 android:id="@+id/novo_contato"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
                 android:orientation="horizontal"
-                android:layout_marginLeft="56dp"
                 >
 
-                <ImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:background="@drawable/botao_flutuante"
-                    android:src="@drawable/ic_contato"
-                    android:layout_marginRight="8dp"/>
-
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text= "@string/novo_contato"
                     android:textSize="32sp"
                     android:textColor="@color/colorPrimary"
                     android:fontFamily="sans-serif"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/atualiza_contato"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginLeft="40dp"
                 >
 
-                <ImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:background="@drawable/botao_flutuante"
-                    android:src="@drawable/ic_contato"
-                    android:layout_marginRight="8dp"/>
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text= "@string/atualiza_contato"
                     android:textSize="32sp"
@@ -70,13 +55,15 @@
                     android:fontFamily="sans-serif"
                     android:textAlignment="center"/>
             </LinearLayout>
+
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="275dp"
             android:background="@color/colorGrey"
             android:layout_marginBottom="16dp"
+            android:paddingTop="25dp"
             >
 
             <ImageView

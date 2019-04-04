@@ -13,7 +13,7 @@ import br.senai.sp.modelo.Contato;
 
 public class ContatoDAO extends SQLiteOpenHelper{
     public ContatoDAO(Context context) {
-        super(context, "db_contato", null, 2);
+        super(context, "db_contato", null, 3);
     }
 
     @Override
@@ -25,7 +25,8 @@ public class ContatoDAO extends SQLiteOpenHelper{
                "endereco TEXT NOT NULL," +
                "telefone TEXT NOT NULL," +
                "email TEXT NOT NULL," +
-               "linkedin TEXT NOT NULL)";
+               "linkedin TEXT NOT NULL, " +
+                "foto BLOB)";
 
         db.execSQL(sql);
 

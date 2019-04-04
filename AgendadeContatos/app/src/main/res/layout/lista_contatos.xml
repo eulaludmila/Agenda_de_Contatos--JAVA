@@ -2,38 +2,65 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp">
 
     <ImageView
         android:id="@+id/img_contato"
         android:layout_width="0dp"
-        android:layout_height="64dp"
+        android:layout_height="72dp"
         android:layout_weight="1"
-        android:src="@drawable/ic_person"/>
+        android:paddingTop="8dp"
+        android:src="@drawable/ic_person"
+        />
+
+
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="64dp"
-        android:layout_weight="4"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:orientation="vertical"
+        android:paddingTop="8dp">
 
         <TextView
             android:id="@+id/txt_nome_contato"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nome Contato"
-            android:textSize="26sp"
             android:maxLines="1"
-            android:textStyle="bold"/>
+            android:text="Nome Contato"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/txt_telefone_list"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Telefone"
-            android:textSize="21sp"/>
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/botao_telefone"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="5dp"/>
+
+
+            <TextView
+                android:id="@+id/txt_telefone_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Telefone"
+                android:textSize="16sp"
+                android:layout_marginTop="4dp"/>
+        </LinearLayout>
 
 
     </LinearLayout>
+
+
+
+
 
 </LinearLayout>
