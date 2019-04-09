@@ -148,7 +148,7 @@ public class CadastroContatoHelper {
         txtTelefone.setText(null);
         txtEmail.setText(null);
         txtLinkedin.setText(null);
-        //foto.setImageDrawable(null);
+        foto.setImageDrawable(null);
         txtNome.requestFocus();
     }
 

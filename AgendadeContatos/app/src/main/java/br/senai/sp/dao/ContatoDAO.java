@@ -39,8 +39,8 @@ public class ContatoDAO extends SQLiteOpenHelper{
         onCreate(db);
         "*/
 
-        String sql = "ALTER TABLE tbl_contato ADD COLUMN foto BLOB";
-        db.execSQL(sql);
+        /*String sql = "ALTER TABLE tbl_contato ADD COLUMN foto BLOB";
+        db.execSQL(sql);*/
 
 
     }

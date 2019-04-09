@@ -114,18 +114,6 @@ public class MainActivity extends AppCompatActivity {
                 builder.create().show();
                 break;
 
-            case R.id.ligar:
-
-                Contato numeroContato = helper.getContato();
-
-                Uri uri = Uri.parse("tel:" + numeroContato.getTelefone());
-                Intent chamada = new Intent(Intent.ACTION_DIAL, uri);
-
-                startActivity(chamada);
-
-
-                break;
-
 
         }
 

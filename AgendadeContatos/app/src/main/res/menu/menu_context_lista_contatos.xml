@@ -7,8 +7,4 @@
         android:title="Excluir">
     </item>
 
-    <item
-        android:id="@+id/ligar"
-        android:title="Ligar">
-    </item>
 </menu>

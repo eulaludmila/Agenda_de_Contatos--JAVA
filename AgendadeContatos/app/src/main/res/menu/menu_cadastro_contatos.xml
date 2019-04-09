@@ -19,6 +19,15 @@
 
     </item>
 
+    <item
+        android:id="@+id/ligar"
+        android:title="Ligar"
+        android:icon="@drawable/ic_ligar"
+
+        >
+
+    </item>
+
 
 
 </menu>

@@ -37,6 +37,7 @@ public class CadastroActivity extends AppCompatActivity {
     private Button btnGaleria;
     private ImageView imgFoto;
     private String caminhoFoto;
+    private int id;
 
 
     @Override
@@ -119,6 +120,7 @@ public class CadastroActivity extends AppCompatActivity {
             novoContato.setVisibility(View.INVISIBLE);
             atualizaContato.setVisibility(View.VISIBLE);
             helper.preencherFormulario(contato);
+
         }
 
 
@@ -139,6 +141,7 @@ public class CadastroActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()){
+
             case R.id.salvar:
                 Contato contato = helper.getContato();
                 ContatoDAO dao = new ContatoDAO(this);
@@ -165,6 +168,25 @@ public class CadastroActivity extends AppCompatActivity {
             case R.id.limpar:
 
                 helper.limparCampos();
+                break;
+
+            case R.id.ligar:
+
+                Contato numeroContato = helper.getContato();
+
+                if(numeroContato.getId() != 0){
+
+                    Uri uri = Uri.parse("tel:" + numeroContato.getTelefone());
+                    Intent chamada = new Intent(Intent.ACTION_DIAL, uri);
+
+                    startActivity(chamada);
+                }else{
+
+                    Toast.makeText(this, "Não é possível fazer a ligação", Toast.LENGTH_LONG).show();
+
+
+                }
+
                 break;
         }
 
